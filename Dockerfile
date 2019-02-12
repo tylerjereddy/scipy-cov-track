@@ -29,5 +29,6 @@ ENTRYPOINT \
    pytest==$PYTEST_VER pytest-cov==$PYCOV_VER pytest-xdist==$XDIST_VER && \
    cd scipy && git checkout $SCIPY_HASH && \
    python runtests.py --mode=full --gcov -- -n $TEST_CORES --cov-report term --cov=scipy && \
-   gcovr -r ." \
+   echo 'Compiled line coverage total:' && \
+   gcovr -r . | grep -i 'TOTAL' " \
   ]
