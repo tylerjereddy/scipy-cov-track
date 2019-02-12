@@ -21,7 +21,7 @@ RUN git clone https://github.com/scipy/scipy.git
 
 RUN \
   pip install -U pip && \
-  /usr/local/bin/pip install cython==0.28.5 numpy==1.13.3 pytest
+  /usr/local/bin/pip install cython==0.28.5 numpy==1.13.3 pytest==3.1.0
 
 #RUN \
   #cd scipy && \
