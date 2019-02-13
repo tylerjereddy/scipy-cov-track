@@ -3,4 +3,4 @@ Assess the line coverage for Python and compiled language source files retroacti
 build Docker image in repo root with: `docker build -t scipy-cov .`
 
 specify the dependency versions using environment variables (i.e., in a file), and run the docker container to probe line coverage with a command like this:
-`docker run -it --env-file env-scipy-1.0.0 scipy-cov`
+`docker run -it --env-file env_files/env-scipy-0.18.1 scipy-cov`

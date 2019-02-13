@@ -32,6 +32,9 @@ ENTRYPOINT \
    if [[ \"$SCIPY_HASH\" = \"v0.19.1\" ]]; then \
    /usr/local/bin/pip install nose==$NOSE_VER && \
    python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy; fi && \
+   if [[ \"$SCIPY_HASH\" = \"v0.18.1\" ]]; then \
+   /usr/local/bin/pip install nose==$NOSE_VER && \
+   python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy --exclude='test_gzip_py3'; fi && \
    echo 'Compiled line coverage total:' && \
    gcovr -r . | grep -i 'TOTAL' " \
   ]
