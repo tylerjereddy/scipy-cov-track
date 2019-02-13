@@ -28,7 +28,10 @@ ENTRYPOINT \
    "/usr/local/bin/pip install cython==$CYTHON_VER numpy==$NUMPY_VER \
    pytest==$PYTEST_VER pytest-cov==$PYCOV_VER pytest-xdist==$XDIST_VER && \
    cd scipy && git checkout $SCIPY_HASH && \
-   python runtests.py --mode=full --gcov -- -n $TEST_CORES --cov-report term --cov=scipy && \
+   if [[ \"$SCIPY_HASH\" = \"v1.0.0\" ]]; then python runtests.py --mode=full --gcov -- -n $TEST_CORES --cov-report term --cov=scipy; fi && \
+   if [[ \"$SCIPY_HASH\" = \"v0.19.1\" ]]; then \
+   /usr/local/bin/pip install nose==$NOSE_VER && \
+   python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy; fi && \
    echo 'Compiled line coverage total:' && \
    gcovr -r . | grep -i 'TOTAL' " \
   ]
