@@ -9,10 +9,16 @@
 # Compiled language line coverage total: 46 %
 
 # SciPy 0.18.1 coverage assessment
+# command used: docker run -it --env-file env_files/env-scipy-0.18.1 scipy-cov
 # SciPy 0.18.1 full test suite requires exclusion
 # of test_gzip_py3(); see: https://github.com/scipy/scipy/issues/2152
 # Python line coverage total: 81%
 # Compiled language line coverage total: 49 %
+
+# SciPy 0.17.1 coverage assessment
+# command used: docker run -it --env-file env_files/env-scipy-0.17.1 scipy-cov
+# Python line coverage total: 81%
+# Compiled language line coverage total: 50 %
 
 # in addition to detailed notes above, a summary data
 # table that can be parsed with NumPy / matplotlib
@@ -22,3 +28,4 @@
 v1.0.0 87 45
 v0.19.1 83 46
 v0.18.1 81 49
+v0.17.1 81 50
