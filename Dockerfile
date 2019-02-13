@@ -35,7 +35,7 @@ ENTRYPOINT \
    if [[ \"$SCIPY_HASH\" = \"v0.18.1\" ]]; then \
    /usr/local/bin/pip install nose==$NOSE_VER && \
    python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy --exclude='test_gzip_py3'; fi && \
-   if [[ \"$SCIPY_HASH\" = \"v0.16.1\" ]]; then \
+   if [[ \"$SCIPY_HASH\" = \"v0.16.1\" ]] || [[ \"$SCIPY_HASH\" = \"v0.15.1\" ]]; then \
    /usr/local/bin/pip install nose==$NOSE_VER && \
    ln -sf /lib/x86_64-linux-gnu/libm-2.23.so /usr/lib/x86_64-linux-gnu/libm.so && \
    python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy --exclude='test_gzip_py3'; fi && \
