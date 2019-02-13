@@ -3,9 +3,15 @@
 # Python line coverage total: 87%
 # Compiled language line coverage total: 45 %
 
+# SciPy 0.19.1 coverage assessment
+# command used: docker run -it --env-file env_files/env-scipy-0.19.1 scipy-cov
+# Python line coverage total: 83%
+# Compiled language line coverage total: 46 %
+
 # in addition to detailed notes above, a summary data
 # table that can be parsed with NumPy / matplotlib
 # is helpful below
 
 # SciPy commit hash | Python line % | Compiled line %
 v1.0.0 87 45
+v0.19.1 83 46
