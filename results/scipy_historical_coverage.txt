@@ -43,10 +43,10 @@
 
 # SciPy 0.13.3 coverage assessment
 # required checkout of runtests.py from v0.14.1 to support gcov argument
-# had to dial Cython back to 0.21
+# had to dial Cython back to 0.21 & NumPy to 1.7.0
 # command used: docker run -it --env-file env_files/env-scipy-0.13.3 scipy-cov
-# Python line coverage total: %
-# Compiled language line coverage total: %
+# Python line coverage total: 79 %
+# Compiled language line coverage total: 51 %
 
 # in addition to detailed notes above, a summary data
 # table that can be parsed with NumPy / matplotlib
@@ -60,4 +60,4 @@ v0.17.1 81 50
 v0.16.1 80 52
 v0.15.1 79 52
 v0.14.1 82 53
-v0.13.3
+v0.13.3 79 51
