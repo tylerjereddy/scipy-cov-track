@@ -51,3 +51,39 @@ ax.set_xlabel('SciPy version')
 ax.set_ylabel('% line coverage')
 ax.legend()
 fig.savefig('cov.png', dpi=300)
+
+# write a second plot that also contains
+# total line counts
+python_tots = []
+compiled_tots = []
+with open('../results/total_lines.txt', 'r') as countfile:
+    for line in countfile:
+        if line.startswith('#'):
+            continue
+        else:
+            version, python_tot, compiled_tot = line.split()
+            python_tots.append(int(python_tot))
+            compiled_tots.append(int(compiled_tot))
+
+# convert to arr in ascending version order
+python_tots =  np.array(python_tots)[::-1]
+compiled_tots =  np.array(compiled_tots)[::-1]
+
+ax2 = ax.twinx()
+
+ax2.plot(versions,
+        python_tots,
+        color='blue',
+        alpha=0.5,
+        ls='dashed')
+
+ax2.plot(versions,
+        compiled_tots,
+        color='green',
+        alpha=0.5,
+        ls='dashed')
+
+ax2.set_ylabel('total lines (dashed / color matched)')
+ax2.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
+fig.savefig('cov-tot.png', dpi=300)
