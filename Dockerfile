@@ -8,17 +8,25 @@ RUN \
   apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y \
+  cmake \
   gcc \
   gfortran \
   git \
+  libcurl4-openssl-dev \
+  libicu-dev \
   libopenblas-dev \
   liblapack-dev \
+  libssl-dev \
+  pkg-config \
   python-pip \
-  vim && \
+  ruby-dev \
+  vim \
+  zlib1g-dev && \
   git clone https://github.com/scipy/scipy.git && \
   pip install -U pip && \
   /usr/local/bin/pip install gcovr && \
-  mkdir /container_output
+  mkdir /container_output && \
+  gem install github-linguist
 
 # for exploring Python & compiled code line coverages retroactively
 # over the history of the SciPy project, it is helpful to be able
@@ -29,6 +37,7 @@ ENTRYPOINT \
    "/usr/local/bin/pip install cython==$CYTHON_VER numpy==$NUMPY_VER \
    pytest==$PYTEST_VER pytest-cov==$PYCOV_VER pytest-xdist==$XDIST_VER && \
    cd scipy && git checkout $SCIPY_HASH && \
+   github-linguist --breakdown 2>&1 | tee /container_output/linguist_scipy_$SCIPY_HASH.txt && \
    if [[ \"$SCIPY_HASH\" = \"v1.0.0\" ]]; then python runtests.py --mode=full --gcov -- -n $TEST_CORES --cov-report term --cov=scipy 2>&1 | tee /container_output/runtests_cov_output_scipy_$SCIPY_HASH.txt; fi && \
    if [[ \"$SCIPY_HASH\" = \"v0.19.1\" ]]; then \
    /usr/local/bin/pip install nose==$NOSE_VER && \
