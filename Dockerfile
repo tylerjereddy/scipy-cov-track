@@ -17,7 +17,8 @@ RUN \
   vim && \
   git clone https://github.com/scipy/scipy.git && \
   pip install -U pip && \
-  /usr/local/bin/pip install gcovr
+  /usr/local/bin/pip install gcovr && \
+  mkdir /container_output
 
 # for exploring Python & compiled code line coverages retroactively
 # over the history of the SciPy project, it is helpful to be able
@@ -45,5 +46,5 @@ ENTRYPOINT \
    ln -sf /lib/x86_64-linux-gnu/libm-2.23.so /usr/lib/x86_64-linux-gnu/libm.so && \
    python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy --exclude='test_gzip_py3'; fi && \
    echo 'Compiled line coverage total:' && \
-   gcovr -r . | grep -i 'TOTAL' " \
+   gcovr -r . -s -o /container_output/gcovr_details_$SCIPY_HASH.txt" \
   ]
