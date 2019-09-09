@@ -24,7 +24,7 @@ RUN \
   zlib1g-dev && \
   git clone https://github.com/scipy/scipy.git && \
   pip install -U pip && \
-  /usr/local/bin/pip install gcovr && \
+  /usr/local/bin/pip install -U gcovr && \
   mkdir /container_output && \
   gem install github-linguist
 
@@ -54,6 +54,7 @@ ENTRYPOINT \
    git checkout v0.14.1 -- runtests.py && \
    ln -sf /lib/x86_64-linux-gnu/libm-2.23.so /usr/lib/x86_64-linux-gnu/libm.so && \
    python runtests.py --mode=full --gcov -- --with-coverage --cover-package=scipy --exclude='test_gzip_py3'; fi && \
+   gcovr --version && \
    echo 'Compiled line coverage total:' && \
-   gcovr -r . -s -o /container_output/gcovr_details_$SCIPY_HASH.txt" \
+   gcovr -r . -s -o /container_output/gcovr_details_$SCIPY_HASH.txt -e '/scipy/build/*' -e 'scipy/fftpack/src/*' -e 'scipy/integrate/odepack/*' -e 'scipy/integrate/quadpack/*' -e 'scipy/interpolate/fitpack/*' -e 'scipy/linalg/src/id_dist/*' -e 'scipy/odr/odrpack/*' -e 'scipy/optimize/minpack/*' -e 'scipy/sparse/linalg/dsolve/SuperLU/*' -e 'scipy/sparse/linalg/eigen/arpack/*' -e 'scipy/spatial/qhull/src/*' -e 'scipy/special/amos/*' -e 'scipy/special/cdflib/*' -e 'scipy/spatial/_voronoi.c' -e 'scipy/spatial/_hausdorff.c' -e 'scipy/signal/_spectral.c' -e 'scipy/_lib/_ccallback_c.c' -e 'scipy/_lib/messagestream.c' -e 'scipy/stats/_stats.c' -e 'scipy/special/_ufuncs_cxx.cxx' -e 'scipy/special/_ufuncs.c'  -e 'scipy/special/_test_round.c' -e 'scipy/special/_ellip_harm_2.c' -e 'scipy/special/_comb.c'  -e 'scipy/special/cython_special.c' -e 'scipy/spatial/qhull.c' -e 'scipy/cluster/_hierarchy.c' -e 'scipy/cluster/_optimal_leaf_ordering.c' -e 'scipy/cluster/_vq.c' -e 'scipy/interpolate/interpnd.c' -e 'scipy/interpolate/_bspl.c' -e 'scipy/interpolate/_ppoly.c' -e 'scipy/io/matlab/mio5_utils.c' -e 'scipy/io/matlab/mio_utils.c' -e 'scipy/io/matlab/streams.c' -e 'scipy/linalg/cython_blas.c' -e 'scipy/linalg/cython_lapack.c' -e 'scipy/linalg/_decomp_update.c' -e 'scipy/linalg/_solve_toeplitz.c' -e 'scipy/ndimage/src/_cytest.c' -e 'scipy/ndimage/src/_ni_label.c' -e 'scipy/optimize/_group_columns.c' -e 'scipy/optimize/_lsq/givens_elimination.c' -e 'scipy/optimize/_trlib/_trlib.c' -e 'scipy/signal/_max_len_seq_inner.c' -e 'scipy/signal/_upfirdn_apply.c' -e 'scipy/sparse/csgraph/_min_spanning_tree.c' -e 'scipy/sparse/csgraph/_reordering.c' -e 'scipy/sparse/csgraph/_shortest_path.c' -e 'scipy/sparse/csgraph/_tools.c' -e 'scipy/sparse/csgraph/_traversal.c' -e 'scipy/sparse/_csparsetools.c' " \
   ]

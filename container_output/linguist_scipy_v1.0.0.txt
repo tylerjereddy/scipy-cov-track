@@ -1,6 +1,6 @@
 50.51%  Python
 26.75%  Fortran
-20.09%  C
+20.08%  C
 2.33%   C++
 0.25%   TeX
 0.03%   Objective-C
@@ -934,7 +934,6 @@ scipy/sparse/linalg/dsolve/_superlu_utils.c
 scipy/sparse/linalg/dsolve/_superlumodule.c
 scipy/sparse/linalg/dsolve/_superluobject.c
 scipy/sparse/linalg/dsolve/_superluobject.h
-scipy/sparse/linalg/eigen/arpack/ARPACK/SRC/version.h
 scipy/spatial/ckdtree/src/coo_entries.h
 scipy/spatial/ckdtree/src/cpp_exc.h
 scipy/spatial/ckdtree/src/partial_sort.h
@@ -1534,6 +1533,7 @@ scipy/sparse/linalg/dsolve/SuperLU/SRC/slu_dcomplex.h
 scipy/sparse/linalg/dsolve/SuperLU/SRC/slu_scomplex.h
 scipy/sparse/linalg/eigen/arpack/ARPACK/SRC/debug.h
 scipy/sparse/linalg/eigen/arpack/ARPACK/SRC/stat.h
+scipy/sparse/linalg/eigen/arpack/ARPACK/SRC/version.h
 scipy/sparse/sparsetools/bool_ops.h
 scipy/sparse/sparsetools/bsr.cxx
 scipy/sparse/sparsetools/bsr.h
